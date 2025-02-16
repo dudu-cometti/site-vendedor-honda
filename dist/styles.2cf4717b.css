@@ -1,0 +1,743 @@
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Estilos para a lista de veículos */
+  #veiculos-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .veiculo-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .veiculo-foto {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .veiculo-info h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+  }
+  
+  .veiculo-info p {
+    margin: 5px 0;
+    color: #666;
+  }
+  
+  .simular-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .simular-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilos para o modal */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .close-btn:hover {
+    color: #007bff;
+  }
+  
+  /* Estilos para os botões no modal */
+  .botoes-modal {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .voltar-btn {
+    background-color: #ccc;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .voltar-btn:hover {
+    background-color: #bbb;
+  }
+  
+  .whatsapp-btn {
+    background-color: #25d366;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .whatsapp-btn:hover {
+    background-color: #128c7e;
+  }
+  
+  /* Estilos para o container dos planos */
+  .planos-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  /* Estilos para cada item de plano */
+  .plano-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    flex: 1 1 calc(33.333% - 30px); /* 3 colunas com espaçamento */
+    max-width: calc(33.333% - 30px);
+    box-sizing: border-box;
+    text-align: center;
+  }
+  
+  .plano-item h5 {
+    margin: 0 0 10px;
+    font-size: 1.1em;
+    color: #333;
+  }
+  
+  /* Estilos para as opções de parcela */
+  .opcoes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .opcao-parcela {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  .opcao-parcela:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .opcao-parcela input[type="radio"] {
+    margin: 0;
+  }
+  
+  .opcao-parcela span {
+    font-size: 0.9em;
+    color: #666;
+  }
+  
+  /* Estilos para dispositivos móveis */
+  @media (max-width: 768px) {
+    .plano-item {
+      flex: 1 1 calc(50% - 20px); /* 2 colunas com espaçamento */
+      max-width: calc(50% - 20px);
+      padding: 10px;
+    }
+  
+    .plano-item h5 {
+      font-size: 1em;
+    }
+  
+    .opcao-parcela {
+      padding: 8px;
+      gap: 8px;
+    }
+  
+    .opcao-parcela span {
+      font-size: 0.8em;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .plano-item {
+      flex: 1 1 calc(100% - 20px); /* 1 coluna com espaçamento */
+      max-width: calc(100% - 20px);
+    }
+  
+    .plano-item h5 {
+      font-size: 0.9em;
+    }
+  
+    .opcao-parcela {
+      padding: 6px;
+      gap: 6px;
+    }
+  
+    .opcao-parcela span {
+      font-size: 0.75em;
+    }
+  }
+  
+  /* Estilos para mensagens de erro */
+  .error {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  /* Estilos para o modal de captura de dados */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content-captura {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .modal-content-captura input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .modal-content-captura button {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .modal-content-captura button#confirmar-dados {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .modal-content-captura button#confirmar-dados:hover {
+    background-color: #0056b3;
+  }
+  
+  .modal-content-captura button#fechar-modal {
+    background-color: #ccc;
+    color: #333;
+  }
+  
+  .modal-content-captura button#fechar-modal:hover {
+    background-color: #bbb;
+  }
+
+  /* Estilos para o modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    overflow-y: auto; /* Adiciona scroll se o conteúdo for muito grande */
+    max-height: 90vh; /* Limita a altura do modal */
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .close-btn:hover {
+    color: #007bff;
+  }
+  
+  /* Estilos para os botões no modal */
+  .botoes-modal {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Espaçamento entre os botões */
+    margin-top: 20px;
+  }
+  
+  .voltar-btn {
+    background-color: #ccc;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    flex: 1; /* Ocupa espaço igual */
+  }
+  
+  .voltar-btn:hover {
+    background-color: #bbb;
+  }
+  
+  .whatsapp-btn {
+    background-color: #25d366;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    flex: 1; /* Ocupa espaço igual */
+  }
+  
+  .whatsapp-btn:hover {
+    background-color: #128c7e;
+  }
+  
+  /* Estilos para o container dos planos */
+  .planos-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Reduz o espaçamento entre os planos */
+    justify-content: center;
+    margin-top: 10%;
+  }
+  
+  /* Estilos para cada item de plano */
+  .plano-item {
+   /* border: 1px solid #ddd; 
+    padding: 10px; /* Reduz o padding */
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    flex: 1 1 calc(50% - 10px); /* 2 colunas com espaçamento reduzido */
+    max-width: calc(50% - 10px);
+    box-sizing: border-box;
+    text-align: center;
+  }
+  
+  .plano-item h5 {
+    margin: 0 0 8px; /* Reduz o espaçamento */
+    font-size: 0.9em; /* Reduz o tamanho da fonte */
+    color: #333;
+  }
+  
+  /* Estilos para as opções de parcela */
+  .opcoes {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Reduz o espaçamento */
+  }
+  
+  .opcao-parcela {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Reduz o espaçamento */
+    padding: 8px; /* Reduz o padding */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  .opcao-parcela:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .opcao-parcela input[type="radio"] {
+    margin: 0;
+  }
+  
+  .opcao-parcela span {
+    font-size: 0.8em; /* Reduz o tamanho da fonte */
+    color: #666;
+  }
+  
+/* Estilos para todos os dispositivos móveis */
+@media (max-width: 768px) {
+    .plano-item {
+      flex: 1 1 calc(50% - 10px); /* Mantém duas colunas */
+      max-width: calc(50% - 10px);
+      padding: 8px; /* Mantém o padding reduzido */
+    }
+  
+    .plano-item h5 {
+      font-size: 0.8em; /* Tamanho de fonte ajustado */
+    }
+  
+    .opcao-parcela {
+      padding: 6px; /* Ajusta o padding */
+      gap: 6px; /* Espaçamento ajustado */
+    }
+  
+    .opcao-parcela span {
+      font-size: 0.75em; /* Tamanho da fonte ajustado */
+    }
+  }
+
+/* Estilos para o modal de captura de dados do cliente */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    width: 300px;
+    text-align: center;
+  }
+  
+  .modal-content h3 {
+    margin-bottom: 20px;
+  }
+  
+  .modal-content input[type="text"],
+  .modal-content input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .modal-content input[type="text"] {
+    text-transform: capitalize;
+  }
+
+  
+  /* Máscara para telefone */
+  #cliente-telefone {
+    letter-spacing: 1px;
+  }
+  
+  #cliente-nome {
+    text-transform: capitalize;
+  }
+  
+  /* Estilos para o modal de captura de dados do cliente */
+/* Estilos para o modal de captura de dados do cliente */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content-captura {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 300px;
+  text-align: center;
+}
+
+.modal-content-captura h3 {
+  margin-bottom: 20px;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.modal-content-captura input[type="text"],
+.modal-content-captura input[type="tel"] {
+  width: calc(100% - 20px); /* Ajusta a largura para caber dentro do modal */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+
+.modal-content-captura input[type="text"] {
+  text-transform: capitalize;
+}
+
+.modal-content-captura button {
+  width: calc(100% - 20px); /* Ajusta a largura para caber dentro do modal */
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 0.9em;
+}
+
+.modal-content-captura button:hover {
+  background-color: #0056b3;
+}
+
+.modal-content-captura button#fechar-modal {
+  background-color: #ccc;
+  color: #333;
+}
+
+.modal-content-captura button#fechar-modal:hover {
+  background-color: #bbb;
+}
+
+/* Máscara para telefone */
+#cliente-telefone {
+  letter-spacing: 1px;
+}
+
+/* Estilos para os botões no modal de simulação */
+.botoes-modal {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px; /* Espaçamento entre os botões */
+  margin-top: 20px;
+}
+
+.voltar-btn {
+  background-color: #007bff;
+  color: #333333;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  flex: 1; /* Ocupa espaço igual */
+}
+
+.voltar-btn:hover {
+  background-color: #411478;
+}
+
+.whatsapp-btn {
+  background-color: #25d366; /* Verde do WhatsApp */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  flex: 1; /* Ocupa espaço igual */
+}
+
+.whatsapp-btn:hover {
+  background-color: #128c65; /* Verde mais escuro ao passar o mouse */
+}
+
+/* Centralizar o plano se houver apenas um */
+.plano-item.centralizado {
+  margin: 0 auto;
+  flex: 1 1 100%; /* Ocupa toda a largura */
+  max-width: 100%;
+}
+
+/* Estilos para a lista de veículos */
+#veiculos-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Espaçamento entre os itens */
+  justify-content: center; /* Centraliza os itens */
+}
+
+.veiculo-item {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  flex: 1 1 calc(25% - 40px); /* 4 colunas com espaçamento */
+  max-width: calc(25% - 40px); /* Limita a largura para 4 itens por linha */
+  box-sizing: border-box;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s; /* Efeito de hover */
+}
+
+.veiculo-item:hover {
+  transform: translateY(-5px); /* Levanta o item ao passar o mouse */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ao passar o mouse */
+}
+
+.veiculo-foto {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 8px; /* Bordas arredondadas para a foto */
+}
+
+.veiculo-info h3 {
+  margin: 0;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.veiculo-info p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.simular-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.simular-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 1024px) {
+  .veiculo-item {
+    flex: 1 1 calc(33.333% - 40px); /* 3 colunas em telas menores */
+    max-width: calc(33.333% - 40px);
+  }
+}
+
+@media (max-width: 768px) {
+  .veiculo-item {
+    flex: 1 1 calc(50% - 40px); /* 2 colunas em tablets */
+    max-width: calc(50% - 40px);
+  }
+}
+
+@media (max-width: 480px) {
+  .veiculo-item {
+    flex: 1 1 100%; /* 1 coluna em dispositivos móveis */
+    max-width: 100%;
+  }
+}
+
+/* Estilos para o cabeçalho do perfil */
+.perfil {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.foto-perfil {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.perfil h1 {
+  margin: 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.redes-sociais {
+  margin-top: 10px;
+}
+
+.redes-sociais a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #007bff;
+  font-size: 0.9em;
+}
+
+.redes-sociais a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+/*# sourceMappingURL=/styles.2cf4717b.css.map */
