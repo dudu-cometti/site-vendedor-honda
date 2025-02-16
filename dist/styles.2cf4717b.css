@@ -736,14 +736,17 @@ body {
   text-decoration: underline;
 }
 
+/* Estilos para os links de autenticação */
 .auth-links {
   margin-top: 20px;
+  text-align: center;
 }
 
 .auth-links a {
   margin: 0 10px;
   text-decoration: none;
   color: #007bff;
+  font-size: 1.1em;
 }
 
 .auth-links a:hover {

@@ -129,6 +129,8 @@ function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyri
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 var API_BASE_URL = "https://www.consorcionacionalhonda.com.br/api";
+
+// Busca veículos por estado e categoria
 var fetchVeiculos = exports.fetchVeiculos = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(estado, categoria) {
     var response;
@@ -165,6 +167,8 @@ var fetchVeiculos = exports.fetchVeiculos = /*#__PURE__*/function () {
     return _ref.apply(this, arguments);
   };
 }();
+
+// Busca planos por estado e modelo
 var fetchPlanos = exports.fetchPlanos = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(estado, modelo) {
     var response;
@@ -488,7 +492,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49849" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53987" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

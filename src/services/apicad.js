@@ -1,6 +1,6 @@
-const API_BASE_URL = "http://localhost:3000/api"; // URL do backend de autenticação
+const API_BASE_URL = "http://localhost:3000/api"; // URL do backend
 
-// Cadastra um novo usuário
+// Função para cadastrar um usuário
 export const cadastrarUsuario = async (usuario) => {
     try {
         const response = await fetch(`${API_BASE_URL}/cadastro`, {
@@ -18,7 +18,7 @@ export const cadastrarUsuario = async (usuario) => {
     }
 };
 
-// Faz login do usuário
+// Função para fazer login
 export const fazerLogin = async (credenciais) => {
     try {
         const response = await fetch(`${API_BASE_URL}/login`, {
