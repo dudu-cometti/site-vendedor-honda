@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+  <title>Perfil do Vendedor</title>
+  <link rel="stylesheet" href="../styles/styles.css" />
+</head>
+<body>
+  <div id="loader" style="display: none;">
+    <p>Enviando...</p>
+  </div>
+  <div class="profile-container">
+    <div class="profile-header">
+      <img id="profilePhoto" src="default-profile.png" alt="Foto de Perfil" class="profile-photo" />
+      <h2 id="sellerName">Nome do Vendedor</h2>
+    </div>
+    <p id="sellerPhone">Telefone: (00) 00000-0000</p>
+    <p id="sellerInstagram">@instagram</p>
+    <p id="sellerFacebook">@facebook</p>
+    <p id="sellerWhatsapp">@whatsapp</p>
+    <p id="sellerTiktok">@tiktok</p>
+    <button id="changePhotoBtn">Alterar Foto de Perfil</button>
+    <button id="editProfileBtn">Alterar Dados</button>
+    <button id="generatePageBtn">Gerar Página de Vendas</button>
+    <button id="logoutBtn">Sair</button>
+  </div>
+
+  <div id="editModal" class="modal">
+    <div class="modal-content modal-adjusted">
+      <h3>Editar Perfil</h3>
+      <form id="editProfileForm">
+        <input type="text" id="name" placeholder="Nome" required /><br />
+        <input type="tel" id="phone" placeholder="Telefone" required /><br />
+        <input type="text" id="instagram" placeholder="Instagram" /><br />
+        <input type="text" id="facebook" placeholder="Facebook" /><br />
+        <input type="text" id="whatsapp" placeholder="WhatsApp" /><br />
+        <input type="text" id="tiktok" placeholder="TikTok" /><br />
+        <button type="submit" class="save-btn">Salvar</button>
+        <button type="button" id="cancelBtn" class="cancel-btn">Cancelar</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="../src/firebaseconfig.js"></script>
+  <script type="module" src="../src/perfil.js"></script>
+</body>
+</html>

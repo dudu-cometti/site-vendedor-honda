@@ -1,54 +1,60 @@
+/* Estilizando o corpo da página */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f4f4;
-  }
-  
-  .container {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 300px;
-  }
-  
-  input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  p {
-    margin-top: 10px;
-  }
-  
-  a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
+  font-family: Arial, sans-serif; /* Define a fonte */
+  background-color: #f0f0f0;      /* Cor de fundo suave */
+  margin: 0;                      /* Remove margens */
+  padding: 0;                     /* Remove preenchimento interno */
+  display: flex;                  /* Usa o modelo flexbox */
+  flex-direction: column;         /* Alinha os itens verticalmente */
+  align-items: center;            /* Centraliza na horizontal */
+  min-height: 100vh;              /* Garante que o corpo ocupe pelo menos toda a altura da tela */
+}
+
+/* Container principal do formulário de cadastro */
+.container {
+  background: #fff;               /* Fundo branco */
+  padding: 20px 30px;             /* Espaçamento interno */
+  border-radius: 10px;            /* Bordas arredondadas */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave */
+  max-width: 350px;               /* Largura máxima */
+  width: 90%;                     /* Ocupa 90% da largura da tela */
+  box-sizing: border-box;         /* Inclui padding e borda no tamanho total */
+  margin-top: 50px;               /* Espaço do topo */
+}
+
+/* Campos de entrada */
+input {
+  width: 100%;                    /* Ocupa 100% da largura do container */
+  padding: 10px;                  /* Espaçamento interno */
+  margin: 8px 0;                  /* Espaço entre os campos */
+  border: 1px solid #ccc;         /* Borda cinza */
+  border-radius: 5px;             /* Bordas arredondadas */
+  box-sizing: border-box;         /* Inclui padding e borda no tamanho total */
+}
+
+/* Botões */
+button {
+  width: 100%;                    /* Ocupa 100% da largura do container */
+  padding: 12px;                  /* Espaçamento interno */
+  background-color: #007bff;      /* Azul padrão */
+  color: white;                   /* Texto branco */
+  border: none;                   /* Remove borda */
+  border-radius: 5px;             /* Bordas arredondadas */
+  cursor: pointer;                /* Muda o cursor para ponteiro */
+  margin: 10px 0;                 /* Espaçamento vertical entre botões */
+  transition: background 0.3s;    /* Animação suave de cor */
+}
+
+button:hover {
+  background-color: #0056b3;      /* Azul mais escuro no hover */
+}
+
+/* Links */
+a {
+  color: #007bff;                 /* Cor azul */
+  text-decoration: none;          /* Remove sublinhado */
+}
+
+a:hover {
+  text-decoration: underline;     /* Adiciona sublinhado ao passar o mouse */
+}

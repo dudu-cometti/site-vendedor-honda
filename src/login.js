@@ -1,5 +1,5 @@
-import { fazerLogin } from './utils/auth.js';
-import { salvarToken } from './utils/storage.js';
+import { signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js';
+import { auth } from './utils/firebase-config.js';
 
 document.getElementById('form-login').addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -7,21 +7,16 @@ document.getElementById('form-login').addEventListener('submit', async (event) =
     const email = document.getElementById('email').value;
     const senha = document.getElementById('senha').value;
 
-    const credenciais = { email, senha };
-
     try {
-        const response = await fazerLogin(credenciais);
+        const userCredential = await signInWithEmailAndPassword(auth, email, senha);
+        const user = userCredential.user;
 
-        if (response.ok) {
-            const data = await response.json();
-            salvarToken(data.token); // Salva o token no localStorage
-            window.location.href = 'index.html'; // Redireciona para a página principal
-        } else {
-            const erro = await response.text();
-            alert(`Erro ao fazer login: ${erro}`);
-        }
+        localStorage.setItem('userToken', user.accessToken); // Salva o token no localStorage
+        alert('Login realizado com sucesso!');
+        window.location.href = 'perfil.html'; // Redireciona para a tela de perfil
+
     } catch (error) {
-        console.error('Erro:', error);
-        alert('Erro ao conectar ao servidor. Tente novamente mais tarde.');
+        console.error('Erro ao fazer login:', error);
+        alert('Erro ao fazer login: ' + error.message);
     }
 });

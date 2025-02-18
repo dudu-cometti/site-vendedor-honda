@@ -1,21 +1,63 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
   <title>Login</title>
-  <link rel="stylesheet" href="../styles/login.css">
+  <link rel="stylesheet" href="../styles/login.css" />
 </head>
+
+<!-- Importando o firebaseConfig.js -->
+<script type="module" src="../src/firebaseconfig.js"></script>
+
 <body>
   <div class="container">
     <h1>Login</h1>
-    <form id="form-login">
-      <input type="email" id="email" placeholder="E-mail" required>
-      <input type="password" id="senha" placeholder="Senha" required>
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="senha" placeholder="Senha" required />
       <button type="submit">Entrar</button>
     </form>
-    <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
+    <p>Não tem conta? <a href="cadastro.html">Cadastre-se</a></p>
   </div>
-  <script src="../src/login.js"></script>
+
+  <script type="module">
+    import { auth, database } from '../src/firebaseconfig.js';
+    import { signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+    import { ref, get } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
+
+    const form = document.getElementById('loginForm');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const senha = document.getElementById('senha').value;
+
+      signInWithEmailAndPassword(auth, email, senha)
+        .then((userCredential) => {
+          const user = userCredential.user;
+
+          // Buscar dados do usuário no Realtime Database
+          get(ref(database, 'usuarios/' + user.uid)).then((snapshot) => {
+            if (snapshot.exists()) {
+              const userData = snapshot.val();
+              localStorage.setItem('usuario', JSON.stringify(userData));
+              window.location.href = 'perfil.html';
+            } else {
+              console.error('Nenhum dado encontrado');
+              alert('Nenhum dado de usuário encontrado.');
+            }
+          }).catch((error) => {
+            console.error(error);
+            alert('Erro ao buscar dados do usuário.');
+          });
+        })
+        .catch((error) => {
+          console.error(error);
+          alert('Erro ao fazer login: ' + error.message);
+        });
+    });
+  </script>
 </body>
 </html>
